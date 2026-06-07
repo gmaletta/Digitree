@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digimon Evolution Tree</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="topbar">
+    <div class="brand">Digimon Evolution Tree</div>
+    <div class="nav-actions" role="tablist" aria-label="Sezioni">
+      <button id="navTree" class="nav-btn active" type="button">🌳 Tree</button>
+      <button id="navGame" class="nav-btn" type="button">🎮 Minigame</button>
+    </div>
+    <button id="openSettings" class="gear-btn" type="button" title="Impostazioni" aria-label="Apri impostazioni">⚙️</button>
+  </nav>
+
+  <main>
+    <section class="search-panel">
+      <input id="search" type="search" placeholder="Cerca Digimon, es. Agumon" autocomplete="off" />
+      <div id="stats"></div>
+      <div id="suggestions"></div>
+    </section>
+
+    <section id="gameSetup" class="game-setup hidden">
+      <div>
+        <h2>Minigame evolutivo</h2>
+        <p>Genera un percorso fattibile tra due Digimon casuali. Parti dallo start e prova ad arrivare all’end con meno salti possibile.</p>
+      </div>
+      <div class="game-setup-actions">
+        <button id="startGame" class="primary-btn" type="button">🎲 Nuovo percorso</button>
+        <button id="giveUpGame" class="secondary-btn" type="button">Mi arrendo</button>
+      </div>
+    </section>
+
+    <section id="viewer" class="viewer empty">
+      <p>Scrivi un nome per iniziare.</p>
+    </section>
+  </main>
+
+  <dialog id="settingsModal" class="modal">
+    <form method="dialog" class="modal-card">
+      <div class="modal-head">
+        <h2>Impostazioni</h2>
+        <button class="close-btn" value="close" aria-label="Chiudi">×</button>
+      </div>
+
+      <label class="setting-row">
+        <span>Dimensione immagini preferita</span>
+        <select id="imageSizePreset">
+          <option value="small">Piccolo</option>
+          <option value="medium">Medio</option>
+          <option value="large">Grande</option>
+        </select>
+      </label>
+
+      <label class="setting-row">
+        <span>Tema</span>
+        <select id="theme">
+          <option value="dark">Scuro</option>
+          <option value="light">Chiaro</option>
+        </select>
+      </label>
+
+      <label class="setting-row">
+        <span>Visualizzazione From / To</span>
+        <select id="viewMode">
+          <option value="cards">Schede</option>
+          <option value="carousel">Carosello</option>
+          <option value="table">Tabella</option>
+        </select>
+      </label>
+    </form>
+  </dialog>
+
+  <dialog id="mapModal" class="modal map-modal">
+    <form method="dialog" class="modal-card map-card">
+      <div class="modal-head">
+        <h2 id="mapTitle">Riepilogo percorso</h2>
+        <button class="close-btn" value="close" aria-label="Chiudi">×</button>
+      </div>
+      <div id="mapLegend" class="map-legend"></div>
+      <div id="mapContent" class="path-map"></div>
+      <div class="modal-actions">
+        <button id="showPerfectMap" class="secondary-btn" type="button">Apri mappa perfetta</button>
+        <button class="primary-btn" value="close">Chiudi</button>
+      </div>
+    </form>
+  </dialog>
+
+
+  <dialog id="giveUpConfirmModal" class="modal">
+    <form method="dialog" class="modal-card">
+      <div class="modal-head">
+        <h2>Arrenderti?</h2>
+        <button class="close-btn" value="cancel" aria-label="Chiudi">×</button>
+      </div>
+      <p class="modal-text">Cliccando il Digimon finale stai scegliendo di arrenderti. Vuoi chiudere il minigame e vedere il riepilogo del percorso fatto?</p>
+      <div class="modal-actions">
+        <button class="secondary-btn" value="cancel" type="button" id="cancelGiveUp">No, continuo</button>
+        <button class="primary-btn danger-btn" value="confirm" type="button" id="confirmGiveUp">Sì, mi arrendo</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

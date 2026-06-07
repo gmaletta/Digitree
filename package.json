@@ -1,0 +1,15 @@
+{
+  "name": "digimon-evolution-tree",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Scraper una-tantum da Wikimon + sito statico GitHub Pages per navigare l'albero evolutivo dei Digimon.",
+  "scripts": {
+    "enrich": "node scripts/enrich-evolutions.js",
+    "serve": "node scripts/serve.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "xlsx": "^0.18.5"
+  }
+}
